@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Mario() {
   // states
@@ -62,6 +62,18 @@ export default function Mario() {
     setListaPersonagens(updatedPersonagens);
   }
 
+  // Carregar lista de Personagens
+  useEffect(() =>{
+    if(localStorage.getItem('personagens') !== null){
+      setListaPersonagens(JSON.parse(localStorage.getItem('personagens')))
+    }
+  }, []);
+
+  //atualizar lista dos personagens do localStorage
+  useEffect(() =>{
+    localStorage.setItem('personagens', JSON.stringify(listaPersonagens))
+  }, [listaPersonagens]);
+
   return (
     <div>
       <h1>Personagens do Mario</h1>
@@ -113,7 +125,7 @@ export default function Mario() {
         </div>
 
         <button onClick={salvarPersonagem}>
-          {editarIndex !== null ? "Atualizar Personagem" : "Adicionar Personagem"}
+          {editarIndex !== null ? "Atualizar" : "Adicionar Personagem"}
         </button>
       </form>
 
