@@ -79,7 +79,7 @@ export default function Mario() {
 
       {/* Botão de adicionar */}
       <div className="text-center mb-4">
-        <button  className="btn btn-dark" onClick={abrirModalParaAdicionar}>
+        <button className="btn btn-dark" onClick={abrirModalParaAdicionar}>
           Adicionar Personagem
         </button>
       </div>
@@ -87,29 +87,38 @@ export default function Mario() {
       {/* Lista */}
       <ul className="list-group">
         {listaPersonagens.map((p, index) => (
-          <li key={index} className="list-group-item d-flex align-items-center">
-            <img src={p.url} alt={p.nome} width={50} height={50} className="me-3" />
-            <div>
-              <strong>{p.nome}</strong> - {p.tipo} - {p.raca}
-              <br />
-              Descrição: {p.descricao}
+          <li key={index} className="list-group-item d-flex align-items-center rounded shadow-sm mb-3 p-3 bg-light">
+            <img
+              src={p.url}
+              alt={p.nome}
+              width={70}
+              height={70}
+              className="me-3 rounded-circle border border-2 border-primary"
+            />
+            <div className="flex-grow-1">
+              <h5 className="mb-1 text-primary">{p.nome}</h5>
+              <div className="text-muted">Tipo: {p.tipo} <br/> Raça: {p.raca}</div>
+              <p className="text-truncate" style={{ maxWidth: '300px' }}>Descripition: {p.descricao}</p>
             </div>
             <div className="ms-auto d-flex gap-2">
               <button
-                className="btn btn-warning btn-sm"
+                className="btn btn-warning btn-sm text-white"
                 onClick={() => abrirModalParaEditar(index)}
+                style={{ minWidth: '75px' }}
               >
                 Editar
               </button>
               <button
-                className="btn btn-danger btn-sm"
+                className="btn btn-danger btn-sm text-white"
                 onClick={() => excluirPersonagem(index)}
+                style={{ minWidth: '75px' }}
               >
                 Excluir
               </button>
             </div>
           </li>
         ))}
+
       </ul>
 
       {/* Modal */}
