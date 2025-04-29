@@ -76,14 +76,25 @@ export default function Mario() {
 
   return (
     <div className="container mt-5">
-
+      {/* Botão de adicionar */}
+      <div className="text-center mb-4">
+        <button className="btn btn-dark w-100" onClick={abrirModalParaAdicionar}>
+          Adicionar Personagem
+        </button>
+      </div>
+      {/* Lista */}
+      <ul className="list-group">
+        {listaPersonagens.map((p, index) => (
+          <li 
+            key={index} 
+            className="list-group-item d-flex flex-column flex-md-row align-items-center rounded shadow-sm mb-3 p-3 bg-light"
+          >
       {/* Botão de adicionar */}
       <div className="text-center mb-4">
         <button className="btn btn-dark" onClick={abrirModalParaAdicionar}>
           Adicionar Personagem
         </button>
       </div>
-
       {/* Lista */}
       <ul className="list-group">
         {listaPersonagens.map((p, index) => (
@@ -93,12 +104,25 @@ export default function Mario() {
               alt={p.nome}
               width={70}
               height={70}
+
+              className="me-3 rounded-circle border border-2 border-primary mb-3 mb-md-0"
+            />
+            <div className="flex-grow-1">
+              <h5 className="mb-1 text-primary">{p.nome}</h5>
+              <div className="text-muted">
+                Tipo: {p.tipo} <br /> Raça: {p.raca}
+              </div>
+              <p className="text-truncate" style={{ maxWidth: '300px' }}>
+                Descrição: {p.descricao}
+              </p>
+
               className="me-3 rounded-circle border border-2 border-primary"
             />
             <div className="flex-grow-1">
               <h5 className="mb-1 text-primary">{p.nome}</h5>
               <div className="text-muted">Tipo: {p.tipo} <br/> Raça: {p.raca}</div>
               <p className="text-truncate" style={{ maxWidth: '300px' }}>Descripition: {p.descricao}</p>
+
             </div>
             <div className="ms-auto d-flex gap-2">
               <button
@@ -120,18 +144,31 @@ export default function Mario() {
         ))}
 
       </ul>
+  
+      {/* Modal */}
+      {showModal && (
+        <div className="modal show fade d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+          <div className="modal-dialog modal-dialog-centered modal-lg">
+            <div className="modal-content">
+
+
+      </ul>
 
       {/* Modal */}
       {showModal && (
         <div className="modal show fade d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog">
             <div className="modal-content">
-
               <div className="modal-header">
                 <h5 className="modal-title">{editarIndex !== null ? "Editar Personagem" : "Adicionar Personagem"}</h5>
                 <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
               </div>
-
+              <div className="modal-body">
+                {["url", "nome", "raca", "tipo", "descricao"].map((field) => (
+                  <div className="mb-3" key={field}>
+                    <label className="form-label">
+                      {field.charAt(0).toUpperCase() + field.slice(1)}:
+                    </label>
               <div className="modal-body">
                 {["url", "nome", "raca", "tipo", "descricao"].map((field) => (
                   <div className="mb-3" key={field}>
@@ -146,14 +183,12 @@ export default function Mario() {
                   </div>
                 ))}
               </div>
-
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Cancelar</button>
                 <button type="button" className="btn btn-primary" onClick={salvarPersonagem}>
                   {editarIndex !== null ? "Atualizar" : "Salvar"}
                 </button>
               </div>
-
             </div>
           </div>
         </div>
