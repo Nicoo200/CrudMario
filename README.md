@@ -50,6 +50,5 @@ Cada personagem do Mario Bros possui os seguintes campos:
 src/
 ├── components/         # Componentes reutilizáveis (Tabela, Formulário, Modal, etc)
 ├── pages/              # Páginas principais da aplicação
-├── services/           # Funções utilitárias (ex: manipulação do LocalStorage)
 ├── App.js              # Componente raiz da aplicação
 └── index.js            # Ponto de entrada da aplicação
