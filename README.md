@@ -52,3 +52,18 @@ src/
 ├── pages/              # Páginas principais da aplicação
 ├── App.js              # Componente raiz da aplicação
 └── index.js            # Ponto de entrada da aplicação
+
+```
+
+
+---
+
+## 👤 Contribuidores
+
+- Desenvolvido por [Nicoo200](https://github.com/Nicoo200)
+- Desenvolvido por [Bernardo-De-Oliveira-Ribeiro](https://github.com/DevBernardo-Oliveira)
+
+
+Caso queira contribuir, sinta-se à vontade para fazer um fork do repositório, criar uma branch com sua feature ou correção, e abrir um pull request!
+
+---
